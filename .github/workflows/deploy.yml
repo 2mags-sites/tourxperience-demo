@@ -19,12 +19,15 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.WHM_SSH_KEY }}
 
-    - name: 📤 Deploy to cPanel via rsync
-      run: |
-        rsync -avz --delete \
-          -e 'ssh -o StrictHostKeyChecking=no -l ${{ secrets.WHM_USERNAME }}' \
-          ./ \
-          '${{ secrets.WHM_HOST }}:/home/tourxgolfco/demo.tourxgolf.co.uk/'
+    - name: 📤 Deploy to cPanel via SCP
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.WHM_HOST }}
+        username: ${{ secrets.WHM_USERNAME }}
+        key: ${{ secrets.WHM_SSH_KEY }}
+        source: "./*"
+        target: "/home/tourxgolfco/demo.tourxgolf.co.uk/"
+        strip_components: 1
         
     - name: ✅ Deployment Complete
       run: echo "Successfully deployed to demo.tourxgolf.co.uk with direct SSH"
