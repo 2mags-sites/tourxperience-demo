@@ -1,2 +1,4 @@
-Deployment test - Updated at 2025-07-25 14:30:00
-Testing simplified rsync configuration with tourxgolfco user
+Deployment test - simplified rsync switches
+Time: 2025-07-25 14:30 UTC
+Config: rsync -avz --delete (matching previous working deployment)
+Change: Updated to test simplified configuration
