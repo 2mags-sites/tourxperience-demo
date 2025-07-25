@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackMan Technology - TourXperience Macclesfield | Golf Simulator Bay Rental</title>
+    <meta name="description" content="Discover TrackMan 4 technology at TourXperience Macclesfield. Dual radar system, 20+ data points, real-time feedback. Premium TrackMan bay rental near Macclesfield.">
+    <meta name="keywords" content="trackman technology macclesfield, golf simulator data, trackman 4 rental, golf training technology macclesfield">
+    <link rel="stylesheet" href="../../_templates/design-system/design-system.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #ff8c00;
+            --primary-black: #0a0a0a;
+            --text-white: #ffffff;
+            --text-gray: #cccccc;
+            --accent-gray: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-black);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-white);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo .x {
+            color: var(--primary-orange);
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .back-button {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .book-now-btn {
+            background-color: var(--primary-orange) !important;
+            color: var(--primary-black) !important;
+            padding: 10px 20px !important;
+            border-radius: 25px !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            font-size: 12px !important;
+            letter-spacing: 0.5px !important;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .book-now-btn:hover {
+            background-color: #e67c00 !important;
+            color: var(--primary-black) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4) !important;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-orange);
+        }
+
+        
+
+        /* Mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            
+            .logo-section {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+            
+            .back-button {
+                font-size: 0.625rem;
+                padding: 0.25rem 0.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-black);
+                flex-direction: column;
+                padding: 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 120px 0 80px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('images/tech-header-simulator-room.jpg') center/cover;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .content-section:nth-child(even) {
+            background-color: var(--accent-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Technology Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tech-card {
+            background-color: var(--primary-black);
+            padding: 40px 30px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-orange);
+            transition: transform 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-card h3 {
+            color: var(--primary-orange);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .tech-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Data Points Section */
+        .data-points {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .data-points {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .data-points {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .data-point {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--accent-gray);
+            border-radius: 8px;
+        }
+
+        .data-point .metric {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-orange);
+            margin-bottom: 10px;
+        }
+
+        .data-point h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-point p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* App Section */
+        .app-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .app-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .app-feature {
+            background-color: var(--primary-black);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .app-feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: var(--primary-black);
+        }
+
+        .app-feature h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .app-feature p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary-orange);
+            color: var(--primary-black);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background-color: var(--primary-black);
+            color: var(--text-white);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--accent-gray);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-orange);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--text-white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .content-section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo-section">
+                <a href="index.html" class="logo">TOUR<span class="x">X</span>PERIENCE</a>
+                <a href="https://tourxgolf.com" class="back-button">BACK TO TOUR X GOLF</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="technology.html" class="active">TECHNOLOGY</a></li>
+                <li><a href="experience.html">EXPERIENCE</a></li>
+                <li><a href="booking.html" class="book-now-btn">BOOK NOW</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>TrackMan <span style="color: var(--primary-orange);">Technology</span></h1>
+            <p>Discover the cutting-edge technology that makes TourXperience the premier TrackMan bay rental facility in Macclesfield</p>
+        </div>
+    </section>
+
+    <!-- TrackMan 4 Overview -->
+    <section class="content-section" style="background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
+                        url('images/tech-young-man-simulator.jpg') center/cover;">
+        <div class="container">
+            <div class="section-title">
+                <h2>TrackMan 4: <span style="color: var(--primary-orange);">Tour-Proven Precision</span></h2>
+                <p>Experience the world's most advanced golf launch monitor technology in our Macclesfield facility</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>Dual Radar System</h3>
+                    <p>Two independent radar systems work in perfect harmony. One tracks your club movement before, during, and after impact, while the other follows the complete ball flight from launch to landing with unprecedented accuracy.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <h3>Unmatched Accuracy</h3>
+                    <p>TrackMan measures golf shots from 4 feet to 400 yards with accuracy of 1 foot at 100 yards. This precision is why professional golfers and coaches worldwide trust TrackMan technology.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <h3>Real-Time Data</h3>
+                    <p>Receive instant feedback on every shot with comprehensive data analysis. See 3D ball trajectory mapping, impact conditions, and launch parameters in real-time for immediate improvement insights.</p>
+                </div>
+                
+                <div class="tech-card">
+                    <h3>Professional Grade</h3>
+                    <p>The same technology used on every major professional golf tour. When you rent a TrackMan bay at TourXperience, you're training with the exact same system the world's best players use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Points Section -->
+    <section class="content-section" style="background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                        url('images/data-analytics-golf.jpg') center/cover;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Comprehensive <span style="color: var(--primary-orange);">Data Analysis</span></h2>
+                <p>Track over 20 precise data points to understand and improve every aspect of your golf swing</p>
+            </div>
+            
+            <div class="data-points">
+                <div class="data-point">
+                    <div class="metric">165</div>
+                    <h4>Ball Speed</h4>
+                    <p>MPH measurement accuracy</p>
+                </div>
+                
+                <div class="data-point">
+                    <div class="metric">12.5°</div>
+                    <h4>Launch Angle</h4>
+                    <p>Precise degree tracking</p>
+                </div>
+                
+                <div class="data-point">
+                    <div class="metric">2,850</div>
+                    <h4>Spin Rate</h4>
+                    <p>RPM measurement</p>
+                </div>
+                
+                <div class="data-point">
+                    <div class="metric">285</div>
+                    <h4>Carry Distance</h4>
+                    <p>Yards of precision</p>
+                </div>
+                
+                <div class="data-point">
+                    <div class="metric">-2.1°</div>
+                    <h4>Club Path</h4>
+                    <p>Swing direction analysis</p>
+                </div>
+                
+                <div class="data-point">
+                    <div class="metric">1.5°</div>
+                    <h4>Face Angle</h4>
+                    <p>Impact position data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Integration -->
+    <section class="content-section" style="background: linear-gradient(rgba(26, 26, 26, 0.95), rgba(26, 26, 26, 0.95)), 
+                        url('images/app-smartphone-golf.jpg') center/cover;">
+        <div class="container">
+            <div class="section-title">
+                <h2>TrackMan Golf <span style="color: var(--primary-orange);">App Integration</span></h2>
+                <p>Connect your sessions to track progress and unlock your full potential with lifetime statistics</p>
+            </div>
+            
+            <div class="app-features">
+                <div class="app-feature">
+                    <div class="app-feature-icon">📊</div>
+                    <h4>Live Data Tracking</h4>
+                    <p>Monitor carry distance, ball speed, height, launch angle and more during your TrackMan bay rental session in real-time.</p>
+                </div>
+                
+                <div class="app-feature">
+                    <div class="app-feature-icon">📈</div>
+                    <h4>Progress Reports</h4>
+                    <p>Access detailed insights and reports from all your TourXperience sessions. Track improvements over time with comprehensive analytics.</p>
+                </div>
+                
+                <div class="app-feature">
+                    <div class="app-feature-icon">🎮</div>
+                    <h4>Practice Games</h4>
+                    <p>Engage with interactive games and challenges that make practice sessions more enjoyable while improving your skills.</p>
+                </div>
+                
+                <div class="app-feature">
+                    <div class="app-feature-icon">🏆</div>
+                    <h4>Personal Handicap</h4>
+                    <p>Maintain lifetime statistics including your personal TrackMan handicap calculation based on all your recorded sessions.</p>
+                </div>
+                
+                <div class="app-feature">
+                    <div class="app-feature-icon">🌍</div>
+                    <h4>Virtual Courses</h4>
+                    <p>Play over 300 world-class golf courses with ultra-realistic graphics and accurate course conditions during your bay rental.</p>
+                </div>
+                
+                <div class="app-feature">
+                    <div class="app-feature-icon">👥</div>
+                    <h4>Social Features</h4>
+                    <p>Connect with friends, share achievements, and compete on leaderboards to add a social element to your training.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Experience TrackMan Technology?</h2>
+            <p>Book your TrackMan bay rental in Macclesfield and discover why serious golfers choose TourXperience</p>
+            <a href="booking.html" class="cta-button">Book Your Bay Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TourXperience</h3>
+                    <p>Premium TrackMan bay rental facility in Macclesfield. Four state-of-the-art bays for serious golfers committed to improvement.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="index.html">Home</a></p>
+                    <p><a href="experience.html">The Experience</a></p>
+                    <p><a href="booking.html">Book Your Bay</a></p>
+                    <p><a href="https://tourxgolf.com">Tour X Golf</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Located in Macclesfield</p>
+                    <p>TrackMan bay rental by the hour</p>
+                    <p>Call to book your session</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Keywords</h3>
+                    <p>TrackMan technology Macclesfield</p>
+                    <p>Golf simulator data tracking</p>
+                    <p>TrackMan 4 bay rental</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TourXperience. Partnership with Tour X Golf. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('.nav');
+            const navLinks = document.querySelector('.nav-links');
+            if (!nav.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
