@@ -21,6 +21,7 @@ jobs:
 
     - name: 🧪 Test SSH Connection
       run: |
+        echo "Attempting to connect as user: ${{ secrets.WHM_USERNAME }}"
         ssh -v -o StrictHostKeyChecking=no -o BatchMode=yes ${{ secrets.WHM_USERNAME }}@${{ secrets.WHM_HOST }} 'echo "SSH connection successful"'
 
     - name: 📤 Deploy to cPanel via rsync
