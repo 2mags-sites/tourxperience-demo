@@ -10,26 +10,39 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: 🚀 Checkout code
-      uses: actions/checkout@v3
-    
-    - name: 🔧 Setup SSH using webfactory action
-      uses: webfactory/ssh-agent@v0.8.0
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to cPanel via SSH
+      uses: appleboy/ssh-action@v1.0.0
       with:
-        ssh-private-key: ${{ secrets.WHM_SSH_KEY }}
-    
-    - name: 🔍 Add server to known hosts
-      run: |
-        ssh-keyscan -H 83.223.113.88 >> ~/.ssh/known_hosts
-    
-    - name: 📤 Deploy via rsync
-      run: |
-        rsync -avz --delete \
-          -e "ssh -o StrictHostKeyChecking=no" \
-          --exclude='.git' \
-          --exclude='.github' \
-          --exclude='news' \
-          ./ root@83.223.113.88:/home/githubdemo/public_html/
-        
-    - name: ✅ Deployment Complete
-      run: echo "Successfully deployed to githubdemo.com"
+        host: ${{ secrets.WHM_HOST }}
+        username: ${{ secrets.WHM_USERNAME }}
+        key: ${{ secrets.WHM_SSH_KEY }}
+        script: |
+          # Navigate to the subdomain directory
+          cd /home/tourxgolfco/subdomains/demo/public_html/
+          
+          # Remove old files (except WordPress news folder if it exists)
+          find . -type f ! -path "./news/*" -delete
+          find . -type d -empty -delete
+          
+          # Create temporary directory for new files
+          mkdir -p /tmp/tourxperience-deploy
+          cd /tmp/tourxperience-deploy
+          
+          # Clone the repository
+          git clone https://github.com/2mags-sites/tourxperience-demo.git .
+          
+          # Copy files to production (excluding .git and .github)
+          rsync -av --exclude='.git' --exclude='.github' . /home/tourxgolfco/subdomains/demo/public_html/
+          
+          # Set proper permissions
+          cd /home/tourxgolfco/subdomains/demo/public_html/
+          find . -type f -exec chmod 644 {} \;
+          find . -type d -exec chmod 755 {} \;
+          
+          # Clean up
+          rm -rf /tmp/tourxperience-deploy
+          
+          echo "Deployment complete to https://demo.tourxgolf.co.uk"

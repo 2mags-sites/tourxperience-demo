@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Block WordPress files
+Disallow: /news/wp-admin/
+Disallow: /news/wp-includes/
+Disallow: /news/wp-content/plugins/
+Disallow: /news/wp-content/themes/
+
+# Sitemap
+Sitemap: https://demo.tourxgolf.co.uk/sitemap.xml

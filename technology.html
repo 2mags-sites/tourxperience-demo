@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrackMan Technology - TourXperience Macclesfield | Golf Simulator Bay Rental</title>
-    <meta name="description" content="Discover TrackMan 4 technology at TourXperience Macclesfield. Dual radar system, 20+ data points, real-time feedback. Premium TrackMan bay rental near Macclesfield.">
-    <meta name="keywords" content="trackman technology macclesfield, golf simulator data, trackman 4 rental, golf training technology macclesfield">
+    <title>TrackMan Technology - TourXperience Wigan | Golf Simulator Bay Rental</title>
+    <meta name="description" content="Discover TrackMan IO technology at TourXperience Wigan. Dual radar system, 20+ data points, real-time feedback. Premium TrackMan bay rental near Wigan.">
+    <meta name="keywords" content="trackman technology wigan, golf simulator data, trackman io rental, golf training technology wigan">
     <link rel="stylesheet" href="../../_templates/design-system/design-system.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -302,6 +302,19 @@
             font-weight: 800;
             color: var(--primary-orange);
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .data-point {
+            opacity: 0.8;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .animated .data-point {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .data-point h4 {
@@ -486,7 +499,7 @@
         <nav class="nav container">
             <div class="logo-section">
                 <a href="index.html" class="logo">TOUR<span class="x">X</span>PERIENCE</a>
-                <a href="https://tourxgolf.com" class="back-button">BACK TO TOUR X GOLF</a>
+                <a href="https://tourxgolf.co.uk" class="back-button">BACK TO TOUR X GOLF</a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
@@ -502,17 +515,17 @@
     <section class="page-header">
         <div class="container">
             <h1>TrackMan <span style="color: var(--primary-orange);">Technology</span></h1>
-            <p>Discover the cutting-edge technology that makes TourXperience the premier TrackMan bay rental facility in Macclesfield</p>
+            <p>Discover the cutting-edge technology that makes TourXperience the premier TrackMan bay rental facility in Wigan</p>
         </div>
     </section>
 
-    <!-- TrackMan 4 Overview -->
+    <!-- TrackMan IO Overview -->
     <section class="content-section" style="background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
                         url('images/tech-young-man-simulator.jpg') center/cover;">
         <div class="container">
             <div class="section-title">
-                <h2>TrackMan 4: <span style="color: var(--primary-orange);">Tour-Proven Precision</span></h2>
-                <p>Experience the world's most advanced golf launch monitor technology in our Macclesfield facility</p>
+                <h2>TrackMan IO: <span style="color: var(--primary-orange);">Tour-Proven Precision</span></h2>
+                <p>Experience the world's most advanced golf launch monitor technology in our Wigan facility</p>
             </div>
             
             <div class="tech-grid">
@@ -550,37 +563,37 @@
             
             <div class="data-points">
                 <div class="data-point">
-                    <div class="metric">165</div>
+                    <div class="metric" data-target="165">0</div>
                     <h4>Ball Speed</h4>
                     <p>MPH measurement accuracy</p>
                 </div>
                 
                 <div class="data-point">
-                    <div class="metric">12.5°</div>
+                    <div class="metric" data-target="12.5" data-decimal="1" data-suffix="°">0</div>
                     <h4>Launch Angle</h4>
                     <p>Precise degree tracking</p>
                 </div>
                 
                 <div class="data-point">
-                    <div class="metric">2,850</div>
+                    <div class="metric" data-target="2850" data-comma="true">0</div>
                     <h4>Spin Rate</h4>
                     <p>RPM measurement</p>
                 </div>
                 
                 <div class="data-point">
-                    <div class="metric">285</div>
+                    <div class="metric" data-target="285">0</div>
                     <h4>Carry Distance</h4>
                     <p>Yards of precision</p>
                 </div>
                 
                 <div class="data-point">
-                    <div class="metric">-2.1°</div>
+                    <div class="metric" data-target="-2.1" data-decimal="1" data-suffix="°">0</div>
                     <h4>Club Path</h4>
                     <p>Swing direction analysis</p>
                 </div>
                 
                 <div class="data-point">
-                    <div class="metric">1.5°</div>
+                    <div class="metric" data-target="1.5" data-decimal="1" data-suffix="°">0</div>
                     <h4>Face Angle</h4>
                     <p>Impact position data</p>
                 </div>
@@ -641,7 +654,7 @@
     <section class="cta-section">
         <div class="container">
             <h2>Ready to Experience TrackMan Technology?</h2>
-            <p>Book your TrackMan bay rental in Macclesfield and discover why serious golfers choose TourXperience</p>
+            <p>Book your TrackMan bay rental in Wigan and discover why serious golfers choose TourXperience</p>
             <a href="booking.html" class="cta-button">Book Your Bay Now</a>
         </div>
     </section>
@@ -652,7 +665,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>TourXperience</h3>
-                    <p>Premium TrackMan bay rental facility in Macclesfield. Four state-of-the-art bays for serious golfers committed to improvement.</p>
+                    <p>Premium TrackMan bay rental facility in Wigan. Two state-of-the-art bays for serious golfers committed to improvement.</p>
                 </div>
                 
                 <div class="footer-section">
@@ -660,21 +673,21 @@
                     <p><a href="index.html">Home</a></p>
                     <p><a href="experience.html">The Experience</a></p>
                     <p><a href="booking.html">Book Your Bay</a></p>
-                    <p><a href="https://tourxgolf.com">Tour X Golf</a></p>
+                    <p><a href="https://tourxgolf.co.uk">Tour X Golf</a></p>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <p>Located in Macclesfield</p>
+                    <p>Located in Wigan</p>
                     <p>TrackMan bay rental by the hour</p>
                     <p>Call to book your session</p>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Keywords</h3>
-                    <p>TrackMan technology Macclesfield</p>
+                    <p>TrackMan technology Wigan</p>
                     <p>Golf simulator data tracking</p>
-                    <p>TrackMan 4 bay rental</p>
+                    <p>TrackMan IO bay rental</p>
                 </div>
             </div>
             
@@ -696,6 +709,86 @@
             const navLinks = document.querySelector('.nav-links');
             if (!nav.contains(e.target)) {
                 navLinks.classList.remove('active');
+            }
+        });
+
+        // Count-up animation function
+        function animateCounter(element, target, duration = 2000) {
+            const start = performance.now();
+            const startValue = 0;
+            const isNegative = target < 0;
+            const absoluteTarget = Math.abs(target);
+            
+            const decimal = element.dataset.decimal ? parseInt(element.dataset.decimal) : 0;
+            const suffix = element.dataset.suffix || '';
+            const useComma = element.dataset.comma === 'true';
+            
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+                
+                let currentValue = startValue + (absoluteTarget - startValue) * easeOutCubic;
+                
+                // Apply negative sign if needed
+                if (isNegative) currentValue = -currentValue;
+                
+                // Format the number
+                let displayValue;
+                if (decimal > 0) {
+                    displayValue = currentValue.toFixed(decimal);
+                } else {
+                    displayValue = Math.floor(Math.abs(currentValue));
+                    if (isNegative && displayValue > 0) displayValue = -displayValue;
+                }
+                
+                // Add comma formatting if needed
+                if (useComma && !decimal) {
+                    displayValue = displayValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                }
+                
+                element.textContent = displayValue + suffix;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+
+        // Intersection Observer for triggering animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    
+                    // Find all metric elements in this section
+                    const metrics = entry.target.querySelectorAll('.metric[data-target]');
+                    
+                    metrics.forEach((metric, index) => {
+                        const target = parseFloat(metric.dataset.target);
+                        // Stagger the animations slightly
+                        setTimeout(() => {
+                            animateCounter(metric, target);
+                        }, index * 200);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Observe the data analysis section
+        document.addEventListener('DOMContentLoaded', () => {
+            const dataSection = document.querySelector('.data-points').closest('section');
+            if (dataSection) {
+                observer.observe(dataSection);
             }
         });
     </script>
