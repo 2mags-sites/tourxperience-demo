@@ -22,6 +22,7 @@ jobs:
         remote_host: ${{ secrets.WHM_HOST }}
         remote_user: ${{ secrets.WHM_USERNAME }}
         remote_key: ${{ secrets.WHM_SSH_KEY }}
+        remote_port: 22
         
     - name: ✅ Deployment Complete
       run: echo "Successfully deployed to demo.tourxgolf.co.uk"
