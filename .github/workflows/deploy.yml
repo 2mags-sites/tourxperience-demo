@@ -13,39 +13,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Deploy to cPanel via SSH
+    - name: Test SSH Connection
       uses: appleboy/ssh-action@v1.0.3
       with:
         host: ${{ secrets.WHM_HOST }}
         username: ${{ secrets.WHM_USERNAME }}
         key: ${{ secrets.WHM_SSH_KEY }}
         port: 22
-        timeout: 60s
-        command_timeout: 10m
+        timeout: 30s
         script: |
-          # Navigate to the subdomain directory
-          cd /home/tourxgolfco/demo.tourxgolf.co.uk
-          
-          # Remove old files (except WordPress news folder if it exists)
-          find . -type f ! -path "./news/*" -delete 2>/dev/null || true
-          find . -type d -empty -delete 2>/dev/null || true
-          
-          # Create temporary directory for new files
-          mkdir -p /tmp/tourxperience-deploy-$$
-          cd /tmp/tourxperience-deploy-$$
-          
-          # Clone the repository
-          git clone --depth 1 https://github.com/2mags-sites/tourxperience-demo.git .
-          
-          # Copy files to production (excluding .git and .github)
-          rsync -av --exclude='.git' --exclude='.github' --exclude='*.zip' . /home/tourxgolfco/demo.tourxgolf.co.uk/
-          
-          # Set proper permissions
-          cd /home/tourxgolfco/demo.tourxgolf.co.uk/
-          find . -type f -exec chmod 644 {} \; 2>/dev/null || true
-          find . -type d -exec chmod 755 {} \; 2>/dev/null || true
-          
-          # Clean up
-          rm -rf /tmp/tourxperience-deploy-$$
-          
-          echo "Deployment complete to https://demo.tourxgolf.co.uk"
+          echo "SSH connection successful!"
+          whoami
+          pwd
+          ls -la /home/tourxgolfco/ | head -10
+          echo "Checking if demo subdomain exists:"
+          ls -la /home/tourxgolfco/demo.tourxgolf.co.uk 2>/dev/null || echo "Directory does not exist"
