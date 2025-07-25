@@ -16,12 +16,12 @@ jobs:
     - name: 📤 Deploy to cPanel via rsync
       uses: burnett01/rsync-deployments@5.2
       with:
-        switches: -avz --delete --exclude='.git' --exclude='.github' --exclude='news'
-        path: .
-        remote_path: demo.tourxgolf.co.uk
+        switches: -avz --delete
+        path: ./
+        remote_path: /home/tourxgolfco/demo.tourxgolf.co.uk/
         remote_host: ${{ secrets.WHM_HOST }}
-        remote_user: tourxgolfco
+        remote_user: ${{ secrets.WHM_USERNAME }}
         remote_key: ${{ secrets.WHM_SSH_KEY }}
         
     - name: ✅ Deployment Complete
-      run: echo "Successfully deployed to demo.tourxgolf.co.uk"
+      run: echo "Successfully deployed to demo.tourxgolf.co.uk with full path"
