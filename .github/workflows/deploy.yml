@@ -13,12 +13,19 @@ jobs:
     - name: 🚀 Checkout code
       uses: actions/checkout@v3
     
+    - name: 🔍 Debug secrets
+      run: |
+        echo "Host exists: ${{ secrets.WHM_HOST != '' }}"
+        echo "Username exists: ${{ secrets.WHM_USERNAME != '' }}"
+        echo "Key exists: ${{ secrets.WHM_SSH_KEY != '' }}"
+        echo "Host value: ${{ secrets.WHM_HOST }}"
+    
     - name: 🔧 Setup SSH
       run: |
         mkdir -p ~/.ssh
         echo "${{ secrets.WHM_SSH_KEY }}" > ~/.ssh/deploy_key
         chmod 600 ~/.ssh/deploy_key
-        ssh-keyscan -H ${{ secrets.WHM_HOST }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H 83.223.113.88 >> ~/.ssh/known_hosts
     
     - name: 📤 Deploy via rsync
       run: |
@@ -27,7 +34,7 @@ jobs:
           --exclude='.git' \
           --exclude='.github' \
           --exclude='news' \
-          ./ root@${{ secrets.WHM_HOST }}:/home/githubdemo/public_html/
+          ./ root@83.223.113.88:/home/githubdemo/public_html/
         
     - name: ✅ Deployment Complete
       run: echo "Successfully deployed to githubdemo.com"
