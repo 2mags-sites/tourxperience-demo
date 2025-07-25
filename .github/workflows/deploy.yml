@@ -13,15 +13,18 @@ jobs:
     - name: 🚀 Checkout code
       uses: actions/checkout@v3
     
-    - name: 📤 Deploy to cPanel via rsync
-      uses: burnett01/rsync-deployments@5.2
+    # SSH Deployment with rsync (RECOMMENDED - Fast & Secure)
+    - name: 🔑 Setup SSH Agent
+      uses: webfactory/ssh-agent@v0.9.0
       with:
-        switches: -avz --delete
-        path: ./
-        remote_path: /home/tourxgolfco/demo.tourxgolf.co.uk/
-        remote_host: ${{ secrets.WHM_HOST }}
-        remote_user: ${{ secrets.WHM_USERNAME }}
-        remote_key: ${{ secrets.WHM_SSH_KEY }}
+        ssh-private-key: ${{ secrets.WHM_SSH_KEY }}
+
+    - name: 📤 Deploy to cPanel via rsync
+      run: |
+        rsync -avz --delete \
+          -e "ssh -o StrictHostKeyChecking=no" \
+          ./ \
+          "${{ secrets.WHM_USERNAME }}@${{ secrets.WHM_HOST }}:/home/tourxgolfco/demo.tourxgolf.co.uk/"
         
     - name: ✅ Deployment Complete
-      run: echo "Successfully deployed to demo.tourxgolf.co.uk with full path"
+      run: echo "Successfully deployed to demo.tourxgolf.co.uk with direct SSH"
