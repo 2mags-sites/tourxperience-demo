@@ -13,16 +13,21 @@ jobs:
     - name: 🚀 Checkout code
       uses: actions/checkout@v3
     
-    - name: 📤 Deploy to cPanel via SSH
-      uses: appleboy/scp-action@v0.1.5
-      with:
-        host: ${{ secrets.WHM_HOST }}
-        username: ${{ secrets.WHM_USERNAME }}
-        key: ${{ secrets.WHM_SSH_KEY }}
-        source: "./*"
-        target: "/home/githubdemo/public_html"
-        rm: true
-        exclude: ".git,.github,news"
+    - name: 🔧 Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.WHM_SSH_KEY }}" > ~/.ssh/deploy_key
+        chmod 600 ~/.ssh/deploy_key
+        ssh-keyscan -H ${{ secrets.WHM_HOST }} >> ~/.ssh/known_hosts
+    
+    - name: 📤 Deploy via rsync
+      run: |
+        rsync -avz --delete \
+          -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+          --exclude='.git' \
+          --exclude='.github' \
+          --exclude='news' \
+          ./ root@${{ secrets.WHM_HOST }}:/home/githubdemo/public_html/
         
     - name: ✅ Deployment Complete
       run: echo "Successfully deployed to githubdemo.com"
