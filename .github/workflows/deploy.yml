@@ -10,31 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
-      
-    - name: Deploy to cPanel
-      uses: appleboy/ssh-action@v0.1.7
+    - name: 🚀 Checkout code
+      uses: actions/checkout@v3
+    
+    - name: 📤 Deploy to cPanel via SSH
+      uses: burnett01/rsync-deployments@5.2
       with:
-        host: ${{ secrets.WHM_HOST }}
-        username: ${{ secrets.WHM_USERNAME }}
-        key: ${{ secrets.WHM_SSH_KEY }}
-        script: |
-          cd /home/tourxgolfco/demo.tourxgolf.co.uk
-          
-          # Remove existing files (but preserve news folder)
-          find . -maxdepth 1 -type f -delete
-          find . -maxdepth 1 -type d ! -name "." ! -name "news" -exec rm -rf {} +
-          
-          # Clone the repository
-          git clone https://github.com/2mags-sites/tourxperience-demo.git temp_deploy
-          
-          # Move files to current directory
-          mv temp_deploy/* .
-          mv temp_deploy/.htaccess . 2>/dev/null || true
-          
-          # Clean up
-          rm -rf temp_deploy
-          
-          # Set permissions
-          find . -type f -exec chmod 644 {} \;
-          find . -type d -exec chmod 755 {} \;
+        switches: -avzr --delete --exclude='/.git' --exclude='/.github' --exclude='/news'
+        path: ./
+        remote_path: /home/tourxgolfco/demo.tourxgolf.co.uk/
+        remote_host: ${{ secrets.WHM_HOST }}
+        remote_user: ${{ secrets.WHM_USERNAME }}
+        remote_key: ${{ secrets.WHM_SSH_KEY }}
+        
+    - name: ✅ Deployment Complete
+      run: echo "Successfully deployed to demo.tourxgolf.co.uk"
