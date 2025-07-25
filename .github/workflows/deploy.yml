@@ -13,15 +13,20 @@ jobs:
     - name: 🚀 Checkout code
       uses: actions/checkout@v3
     
-    - name: 📤 Deploy to cPanel via SSH
-      uses: burnett01/rsync-deployments@5.2
+    - name: 🔍 Test SSH and Find Correct Path
+      uses: appleboy/ssh-action@v0.1.7
       with:
-        switches: -avzr --delete --exclude='/.git' --exclude='/.github' --exclude='/news'
-        path: ./
-        remote_path: /home/tourxgolfco/demo.tourxgolf.co.uk/
-        remote_host: ${{ secrets.WHM_HOST }}
-        remote_user: ${{ secrets.WHM_USERNAME }}
-        remote_key: ${{ secrets.WHM_SSH_KEY }}
-        
-    - name: ✅ Deployment Complete
-      run: echo "Successfully deployed to demo.tourxgolf.co.uk"
+        host: ${{ secrets.WHM_HOST }}
+        username: ${{ secrets.WHM_USERNAME }}
+        key: ${{ secrets.WHM_SSH_KEY }}
+        script: |
+          echo "=== Current directory ==="
+          pwd
+          echo "=== Home directory contents ==="
+          ls -la /home/tourxgolfco/
+          echo "=== Looking for demo subdomain ==="
+          find /home/tourxgolfco -name "*demo*" -type d 2>/dev/null || true
+          echo "=== Checking if demo.tourxgolf.co.uk exists ==="
+          ls -la /home/tourxgolfco/demo.tourxgolf.co.uk/ 2>/dev/null || echo "Directory does not exist"
+          echo "=== Checking public_html subdirectories ==="
+          ls -la /home/tourxgolfco/public_html/ 2>/dev/null || true
