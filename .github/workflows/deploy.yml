@@ -25,9 +25,8 @@ jobs:
         host: ${{ secrets.WHM_HOST }}
         username: ${{ secrets.WHM_USERNAME }}
         key: ${{ secrets.WHM_SSH_KEY }}
-        source: "./*"
+        source: "."
         target: "/home/tourxgolfco/demo.tourxgolf.co.uk/"
-        strip_components: 1
         
     - name: ✅ Deployment Complete
       run: echo "Successfully deployed to demo.tourxgolf.co.uk with direct SSH"
